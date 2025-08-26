@@ -3,8 +3,10 @@
 function Intro() {
 
     return (
-        <div>
-            <h1>Hi, I'm Brendan</h1>
+        <div class="">
+            <div class="w-screen h-screen relative z-0 bg-cover bg-no-repeat bg-center bg-[url('brendan-portfolio/background1.png')]">
+                <div class=""></div>
+            </div>
         </div>
     );
 };

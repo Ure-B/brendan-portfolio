@@ -1,3 +1,5 @@
-# brendan-portfolio
+# Welcome to my Portfolio Page
+## Brendan Ure
 
-### npm run deploy
+### To re-deploy, use this command:
+- npm run deploy
