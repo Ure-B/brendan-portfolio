@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import Intro from "../components/Intro";
+import Intro from "../sections/Intro";
 
 function Home() {
 
