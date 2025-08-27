@@ -1,5 +1,8 @@
 # Welcome to my Portfolio Page
-## Brendan Ure
+## By Brendan Ure
+
+### Link to live website:
+https://ure-b.github.io/brendan-portfolio/
 
 ### To run locally, use this command:
 - npm run dev
