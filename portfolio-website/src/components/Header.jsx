@@ -1,7 +1,4 @@
-
-
 function Header() {
-
     return (
         <div>
             <nav className="fixed z-10 top-0 right-0 left-0 p-4 bg-[#060816]">
