@@ -1,3 +1,5 @@
+import { motion } from "motion/react";
+
 function Header() {
     return (
         <div>
@@ -7,10 +9,18 @@ function Header() {
                         <p className="text-white cursor-pointer text-[20px] font-extrabold font-sans font-stretch-105%">BRENDAN URE</p>
                     </a>
                     <ul className="flex gap-6">
-                        <li className="text-white cursor-pointer text-[20px] font-semibold font-sans font-stretch-105%">About</li>
-                        <li className="text-white cursor-pointer text-[20px] font-semibold font-sans font-stretch-105%">Projects</li>
-                        <li className="text-white cursor-pointer text-[20px] font-semibold font-sans font-stretch-105%">Work</li>
-                        <li className="text-white cursor-pointer text-[20px] font-semibold font-sans font-stretch-105%">Contact</li>
+                        <motion.button whileTap={{ y: 2 }}>
+                            <li className="text-white cursor-pointer text-[20px] font-semibold font-sans font-stretch-105%">About</li>
+                        </motion.button>
+                        <motion.button whileTap={{ y: 2 }}>
+                            <li className="text-white cursor-pointer text-[20px] font-semibold font-sans font-stretch-105%">Projects</li>
+                        </motion.button>
+                        <motion.button whileTap={{ y: 2 }}>
+                            <li className="text-white cursor-pointer text-[20px] font-semibold font-sans font-stretch-105%">Work</li>
+                        </motion.button>
+                        <motion.button whileTap={{ y: 2 }}>
+                            <li className="text-white cursor-pointer text-[20px] font-semibold font-sans font-stretch-105%">Contact</li>
+                        </motion.button>
                         <li>
                             <a className="flex gap-2 cursor-pointer" target="_blank" href="/brendan-portfolio/ResumeBU.pdf">
                                 <p className="text-white text-[20px] font-semibold font-sans font-stretch-105%">Resume</p>
