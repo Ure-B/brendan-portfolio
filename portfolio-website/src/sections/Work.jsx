@@ -1,7 +1,7 @@
 function Work() {
     return (
-        <div>
-
+        <div id="work">
+            
         </div>
     );
 }

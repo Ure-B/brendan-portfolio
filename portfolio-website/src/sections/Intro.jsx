@@ -14,7 +14,12 @@ function Intro() {
                             whileInView={{opacity: 1, y: 0}}
                             transition={{duration: 1.5, type: "spring"}}
                         >
-                            <h1 className="font-black text-[80px]">Hi, I'm <span className="text-[#915EFF]">Brendan</span></h1>
+                            <div className="flex gap-3.5">
+                                <h1 className="font-black text-[80px]">Hi, I'm </h1>
+                                <motion.div initial={{ color: "#FFFFFF"}} animate={{ color: "#915EFF" }} transition={{ duration: 2, type: "spring", delay: 1 }}>
+                                    <h1 className="font-black text-[80px]">Brendan</h1>
+                                </motion.div>
+                            </div>
                         </motion.div>
                         <motion.div 
                             initial={{opacity: 0, y: -50}} 
