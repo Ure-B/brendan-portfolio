@@ -5,25 +5,37 @@ import * as THREE from 'three';
 const vertexShader = `
   uniform float u_time;
   uniform vec3 u_mouse;
+  uniform float u_radius;
   attribute vec3 originalPosition;
+
+  varying float vEffect;
 
   void main() {
     // Calculate the distance to the mouse in 3D space.
     float dist = distance(originalPosition, u_mouse);
-    float effect = 1.0 - smoothstep(0.2, 1.0, dist);
+    float effect = 1.0 - smoothstep(0.0, u_radius, dist);
+
+    // Send effect value to fragment shader
+    vEffect = effect;
 
     // Apply the mouse influence to the particle's position.
     vec3 animatedPosition = originalPosition + (normalize(originalPosition - u_mouse) * effect * 0.8);
 
-    // Standard three.js boilerplate for vertex shaders.
     gl_Position = projectionMatrix * modelViewMatrix * vec4(animatedPosition, 1.0);
-    gl_PointSize = 3.0;
+    gl_PointSize = 4.0;
   }
 `;
 
 const fragmentShader = `
+  varying float vEffect;
+
   void main() {
-    gl_FragColor = vec4(0.569, 0.369, 1.0, 1.0);
+    vec3 baseColor = vec3(0.569, 0.369, 1.0);
+    vec3 effectColor = vec3(1.0, 1.0, 1.0);
+
+    vec3 finalColor = mix(baseColor, effectColor, vEffect);
+
+    gl_FragColor = vec4(finalColor, 1.0);
   }
 `;
 
@@ -38,6 +50,7 @@ function InteractiveParticleSphere(props) {
   const uniforms = useMemo(() => ({
     u_time: { value: 0 },
     u_mouse: { value: new THREE.Vector3() },
+    u_radius: { value: 1.0 },
   }), []);
 
   // Set up the geometry with original positions.
@@ -60,10 +73,12 @@ function InteractiveParticleSphere(props) {
 
   useFrame((state) => {
     uniforms.u_time.value = state.clock.getElapsedTime();
+
+    uniforms.u_radius.value = 1.0 + 0.2 * Math.sin(uniforms.u_time.value * 3.0);
   
     raycaster.setFromCamera(pointer, state.camera);
   
-    const sphere = meshRef.current; // your <points> mesh
+    const sphere = meshRef.current;
     const intersects = raycaster.intersectObject(sphere);
   
     if (intersects.length > 0) {

@@ -38,13 +38,13 @@ function Intro() {
                         </motion.div>
                     </div>
                 </div>
-                <div className="w-full h-full">
+                <div className="w-full h-full pt-45">
                     <Canvas dpr={window.devicePixelRatio} linear camera={{position: [-5, 0, 0]}}>
                         <ambientLight intensity={1.0}/>
                         <pointLight position={[0.8, 0.8, 0.8]}/>
-                        <OrbitControls enableZoom={false} autoRotate={true} enableDamping={true} enablePan={false}/>
+                        <OrbitControls enableZoom={false} autoRotate={true} autoRotateSpeed={1} enableDamping={true} enablePan={false}/>
                         <Suspense fallback={<div>Loading component...</div>}>
-                            <InteractiveParticleSphere position={[0, -1, 0]} radius={2} segments={64}/>
+                            <InteractiveParticleSphere position={[0, 0, 0]} radius={2.2} segments={96}/>
                         </Suspense>
                     </Canvas>
                 </div>
