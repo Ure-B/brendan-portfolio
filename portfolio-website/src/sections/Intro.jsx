@@ -1,6 +1,11 @@
 import { motion } from "motion/react";
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import { Suspense } from "react";
 
 import Typewriter from "../components/Typewriter";
+import ParticleSphere from "../components/ParticleSphere";
+import InteractiveParticleSphere from "../components/InteractiveParticleSphere";
 
 function Intro() {
     return (
@@ -32,6 +37,17 @@ function Intro() {
                         </div>
                         </motion.div>
                     </div>
+                </div>
+                <div className="w-full h-full pt-45">
+                    <Canvas dpr={window.devicePixelRatio} linear>
+                        <ambientLight intensity={1.0}/>
+                        <pointLight position={[0.8, 0.8, 0.8]}/>
+                        <OrbitControls enableZoom={false} autoRotate={true} enableDamping={true} enablePan={false}/>
+                        <Suspense fallback={<div>Loading component...</div>}>
+                            <ParticleSphere position={[0, 0, 0]} radius={2} segments={64}/>
+                            <InteractiveParticleSphere position={[0, 0, 0]} radius={2} segments={64}/>
+                        </Suspense>
+                    </Canvas>
                 </div>
             </div>
         </div>
