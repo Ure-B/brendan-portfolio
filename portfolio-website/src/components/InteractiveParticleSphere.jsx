@@ -102,7 +102,7 @@ function InteractiveParticleSphere(props) {
     if (sphereRef.current) {
         const intersects = raycaster.intersectObject(sphereRef.current);
         if (intersects.length > 0) {
-          uniforms.u_mouse.value.copy(intersects[0].point);
+            uniforms.u_mouse.value.copy(intersects[0].point);
         } 
       }
   });
