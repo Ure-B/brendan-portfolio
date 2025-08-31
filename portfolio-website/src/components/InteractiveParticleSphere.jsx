@@ -3,59 +3,88 @@ import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
 const vertexShader = `
-  uniform float u_time;
-  uniform vec3 u_mouse;
-  uniform float u_radius;
-  attribute vec3 originalPosition;
+    uniform float u_time;
+    uniform vec3 u_mouse;
+    uniform float u_radius;
+    attribute vec3 originalPosition;
 
-  varying float vEffect;
-  varying float vRim;
+    varying float vEffect;
+    varying float vRim;
 
-  void main() {
-    // Calculate the distance to the mouse in 3D space.
-    float dist = distance(originalPosition, u_mouse);
-    float effect = 1.0 - smoothstep(0.0, u_radius, dist);
+    // Simple 3D noise
+    float hash(float n) { return fract(sin(n) * 43758.5453123); }
 
-    // Send effect value to fragment shader
-    vEffect = effect;
+    float noise3d(vec3 x){
+        vec3 p = floor(x);
+        vec3 f = fract(x);
+        f = f*f*(3.0-2.0*f);
+    
+        float n = p.x + p.y*57.0 + 113.0*p.z;
+        return mix(
+            mix(
+                mix(hash(n+0.0), hash(n+1.0),f.x),
+                mix(hash(n+57.0), hash(n+58.0),f.x),f.y
+            ),
+            mix(
+                mix(hash(n+113.0), hash(n+114.0),f.x),
+                mix(hash(n+170.0), hash(n+171.0),f.x),f.y
+            ),f.z
+        );
+    }
 
-    // Apply the mouse influence to the particle's position.
-    vec3 animatedPosition = originalPosition + (normalize(originalPosition - u_mouse) * effect * 0.8);
+    void main() {
+        float dist = distance(originalPosition, u_mouse);
+        float pulseRadius = u_radius * (0.7 + 0.3 * sin(u_time * 3.0));
+        float effect = 1.0 - smoothstep(0.0, pulseRadius, dist);
+        vEffect = effect;
 
-    vec4 mvPosition = modelViewMatrix * vec4(animatedPosition, 1.0);
-    gl_Position = projectionMatrix * mvPosition;
-    gl_PointSize = 4.0;
+        vec3 sphereNoise = vec3(
+            noise3d(originalPosition + vec3(u_time, 0.0, 0.0)),
+            noise3d(originalPosition + vec3(0.0, u_time, 0.0)),
+            noise3d(originalPosition + vec3(0.0, 0.0, u_time))
+        ) * 0.3;
 
-    vec3 normal = normalize((modelViewMatrix * vec4(originalPosition, 0.0)).xyz); // w=0 -> ignores translation
-    vec3 viewDir = vec3(0.0, 0.0, 1.0);
+        vec3 mouseNoise = vec3(
+            noise3d(originalPosition + vec3(u_time, 0.0, 0.0)),
+            noise3d(originalPosition + vec3(0.0, u_time, 0.0)),
+            noise3d(originalPosition + vec3(0.0, 0.0, u_time))
+        ) * effect * 0.6;
 
-    float rim = 1.0 - abs(dot(normal, viewDir));
-    vRim = pow(rim, 2.0);
-  }
+        vec3 animatedPosition = originalPosition + sphereNoise + (normalize(originalPosition - u_mouse) * effect * 0.8);
+
+        vec4 mvPosition = modelViewMatrix * vec4(animatedPosition, 1.0);
+        gl_Position = projectionMatrix * mvPosition;
+        gl_PointSize = 4.0;
+
+        vec3 normal = normalize((modelViewMatrix * vec4(originalPosition, 0.0)).xyz);
+        vec3 viewDir = vec3(0.0, 0.0, 1.0);
+        float rim = 1.0 - abs(dot(normal, viewDir));
+        vRim = pow(rim, 2.0);
+    }
 `;
 
 const fragmentShader = `
-  uniform float u_time;
+    uniform float u_time;
 
-  varying float vEffect;
-  varying float vRim;
+    varying float vEffect;
+    varying float vRim;
 
-  void main() {
-    vec3 baseColor = vec3(0.569, 0.369, 1.0);
-    vec3 rimColor  = vec3(1.0, 1.0, 1.0);
+    void main() {
+        vec3 baseColor = vec3(0.569, 0.369, 1.0);
+        vec3 rimColor  = vec3(1.0, 1.0, 1.0);
 
-    // Start with pure purple core
-    vec3 color = baseColor;
+        // Start with pure purple core
+        vec3 finalColor = baseColor;
 
-    // Mouse influence
-    color = mix(color, rimColor, vEffect);
+        // Mouse influence
+        finalColor = mix(finalColor, rimColor, vEffect);
 
-    // Rim always controls the white silhouette
-    float pulse = 0.3 + 0.2 * sin(u_time * 2.0);
-    color = mix(color, rimColor, vRim);
+        // Rim always controls the white silhouette
+        float pulse = 0.3 + 0.2 * sin(u_time * 2.0);
+        //finalColor = mix(finalColor, rimColor, vRim);
 
-    gl_FragColor = vec4(color, 1.0);
-  }
+        gl_FragColor = vec4(finalColor, 1.0);
+    }
 `;
 
 function InteractiveParticleSphere(props) {
