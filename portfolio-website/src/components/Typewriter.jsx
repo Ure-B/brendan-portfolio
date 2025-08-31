@@ -33,7 +33,6 @@ function Typewriter() {
             // Check if current string is empty and get a new job if it is
             if (currString === "") {
                 if (jobIndex.current === jobs.length) jobIndex.current = 0; 
-                console.log(currJob.current);
                 currJob.current = jobs[jobIndex.current];
                 jobIndex.current++;
                 charIndex.current = 0;
