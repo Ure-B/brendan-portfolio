@@ -1,6 +1,7 @@
 uniform float u_time;
 uniform vec3 u_mouse;
 uniform float u_radius;
+uniform float u_mouseActive;
 attribute vec3 originalPosition;
 
 varying float vEffect;
@@ -10,7 +11,7 @@ void main() {
     float dist = distance(originalPosition, u_mouse);
 
     float pulseRadius = u_radius * (0.7 + 0.3 * sin(u_time * 3.0));
-    float effect = 1.0 - smoothstep(0.0, pulseRadius, dist);
+    float effect = (1.0 - smoothstep(0.0, pulseRadius, dist)) * u_mouseActive;
     vEffect = effect;
 
     vec3 globalNoise = vec3(

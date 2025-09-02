@@ -38,7 +38,7 @@ function Intro() {
                         </motion.div>
                     </div>
                 </div>
-                <div className="w-full h-full pt-45">
+                <div className="w-full h-full pt-50">
                 <Canvas
                     dpr={window.devicePixelRatio}
                     linear

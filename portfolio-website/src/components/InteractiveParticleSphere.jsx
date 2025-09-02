@@ -7,8 +7,16 @@ import vertexSource from "../shaders/particleVertex.glsl?raw";
 import fragmentSource from "../shaders/particleFragment.glsl?raw";
 
 const vertexShader = noise + "\n" + vertexSource;
-
 const fragmentShader = fragmentSource;
+
+function easeOutElastic(t) {
+    const c4 = (2 * Math.PI) / 3;
+    return t === 0
+      ? 0
+      : t === 1
+      ? 1
+      : Math.pow(2, -10 * t) * Math.sin((t * 10 - 0.75) * c4) + 1;
+}
 
 function InteractiveParticleSphere(props) {
   const meshRef = useRef();
@@ -20,10 +28,14 @@ function InteractiveParticleSphere(props) {
   const radius = props.radius;
   const segments = props.segments;
 
+  const targetScale = 1;
+  const scaleRef = useRef(0.01);
+
   const uniforms = useMemo(() => ({
     u_time: { value: 0 },
     u_mouse: { value: new THREE.Vector3() },
     u_radius: { value: 1.0 },
+    u_mouseActive: { value: 0.0 },
   }), []);
 
   // Set up the geometry with original positions.
@@ -47,15 +59,23 @@ function InteractiveParticleSphere(props) {
   useFrame((state) => {
     uniforms.u_time.value = state.clock.getElapsedTime();
 
-    uniforms.u_radius.value = 1.0 + 0.2 * Math.sin(uniforms.u_time.value * 3.0);
+    uniforms.u_radius.value = 2.0;
+
+    const duration = 5.0; // seconds
+    const t = Math.min(state.clock.elapsedTime / duration, 1.0);
+    const eased = 1 + (easeOutElastic(t) - 1) * 0.5;
+    meshRef.current.scale.setScalar(eased);
+
   
     raycaster.setFromCamera(pointer, state.camera);
-  
     if (sphereRef.current) {
         const intersects = raycaster.intersectObject(sphereRef.current);
         if (intersects.length > 0) {
             uniforms.u_mouse.value.copy(intersects[0].point);
-        } 
+            uniforms.u_mouseActive.value = THREE.MathUtils.lerp(uniforms.u_mouseActive.value, 1.0, 0.05);
+          } else {
+            uniforms.u_mouseActive.value = THREE.MathUtils.lerp(uniforms.u_mouseActive.value, 0.0, 0.01);
+          }
       }
   });
 
