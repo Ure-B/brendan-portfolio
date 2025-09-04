@@ -64,18 +64,16 @@ function Globe() {
             
             let rotationLambda = 0;
             let lastElapsed = 0;
-            let currentSpeed = 0.1; // start at fast speed
+            let currentSpeed = 0.1; 
             
             d3.timer((elapsed) => {
                 const delta = elapsed - lastElapsed;
                 lastElapsed = elapsed;
             
-                // Calculate visibility
                 const center = [rotationLambda, -20];
                 const distance = d3.geoDistance(myCoords, center);
                 const visible = distance >= Math.PI / 2;
             
-                // Smooth fade in/out for marker
                 const targetOpacity = visible ? 1 : 0;
                 const currentOpacity = +marker.attr("opacity");
                 const easedOpacity = currentOpacity + (targetOpacity - currentOpacity) * 0.1;
@@ -88,16 +86,13 @@ function Globe() {
                     .attr("y", y)
                     .attr("opacity", easedOpacity);
             
-                // Smooth speed interpolation
-                const targetSpeed = visible ? 0.02 : 0.1; // slow if visible, fast if not
-                currentSpeed += (targetSpeed - currentSpeed) * 0.05; // 0.05 = smoothing factor
+                const targetSpeed = visible ? 0.02 : 0.1; 
+                currentSpeed += (targetSpeed - currentSpeed) * 0.05; 
             
-                // Update rotation
-                rotationLambda += currentSpeed * delta; // scale delta to reasonable rotation step
+                rotationLambda += currentSpeed * delta; 
             
                 projection.rotate([rotationLambda, -25]);
             
-                // Update globe
                 svg.selectAll("path.sphere").attr("d", path);
                 svg.selectAll("path.country").attr("d", path);
             });    
