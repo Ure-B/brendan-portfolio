@@ -2,27 +2,24 @@ import { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import * as topojson from "topojson-client";
 
-function Globe() {
+function Globe({ scale }) {
     const svgRef = useRef();
 
     useEffect(() => {
-        const width = 800;
-        const height = 600;
+        const svg = d3.select(svgRef.current);
+        svg.selectAll("*").remove();
 
-        const svg = d3.select(svgRef.current)
-            .attr("width", width)
-            .attr("height", height);
+        const width = 850;
+        const height = 550;
         
         const projection = d3.geoOrthographic()
-            .scale(200)
+            .scale(scale)
             .translate([width / 2, height / 2])
             .clipAngle(90);
 
         const path = d3.geoPath().projection(projection);
 
-        Promise.all([
-            d3.json("https://unpkg.com/world-atlas@2/countries-110m.json")
-        ]).then(([world]) => {
+        d3.json("https://unpkg.com/world-atlas@2/countries-110m.json").then(world => {
             const countries = topojson.feature(world, world.objects.countries);
 
             // Globe
@@ -43,48 +40,87 @@ function Globe() {
                 .attr("stroke", "#915EFF")
                 .attr("stroke-width", 1);
 
-            // Dot
+            // Marker
             const myCoords = [-113.4937, 53.5461];
             const marker = svg.append("circle")
                 .attr("r", 6)
-                .attr("fill", "red")
-                .attr("stroke", "white")
+                .attr("fill", "#ceb7ff")
+                .attr("stroke", "#915eff")
                 .attr("stroke-width", 2);
+            
+            // Glowing halo
+            const halo = svg.append("circle")
+                .attr("r", 10)
+                .attr("fill", "none")
+                .attr("stroke", "#ceb7ff")
+                .attr("stroke-width", 2)
+                .attr("opacity", 0);
 
-            const label = svg.append("text")
-                .text("Edmonton, AB, Canada")
+            const labelGroup = svg.append("g");
+
+            // Location
+            const location = "Edmonton, AB, Canada";
+            const label = labelGroup.append("text")
+                .text(location)
                 .attr("font-size", 24)
-                .attr("font-family", "sans-serif")
                 .attr("font-weight", "bold")
-                .attr("fill", "white")
-                .attr("stroke", "black")
-                .attr("stroke-width", 0)
+                .attr("fill", "#ceb7ff")
                 .attr("text-anchor", "left")
                 .attr("dy", "-0.8em");
+
+            const labelBg = labelGroup.insert("rect", "text")
+                .attr("rx", 4)
+                .attr("ry", 4)
+                .attr("fill", "black")
+                .attr("stroke", "#915eff")
+                .attr("stroke-width", 0.5)
+                .attr("opacity", 0);
             
             let rotationLambda = 0;
             let lastElapsed = 0;
             let currentSpeed = 0.1; 
             
-            d3.timer((elapsed) => {
+            const timer = d3.timer((elapsed) => {
                 const delta = elapsed - lastElapsed;
                 lastElapsed = elapsed;
             
-                const center = [rotationLambda, -20];
-                const distance = d3.geoDistance(myCoords, center);
-                const visible = distance >= Math.PI / 2;
+                const rotation = projection.rotate(); 
+                const rotatedCoords = d3.geoRotation(rotation)(myCoords);
+                const visible = rotatedCoords[0] > -90 && rotatedCoords[0] < 90;
             
                 const targetOpacity = visible ? 1 : 0;
                 const currentOpacity = +marker.attr("opacity");
                 const easedOpacity = currentOpacity + (targetOpacity - currentOpacity) * 0.1;
             
                 const [x, y] = projection(myCoords);
-                marker.attr("cx", x)
+                labelGroup
+                    .attr("transform", `translate(${x + 10},${y - 10})`)
+                    .attr("opacity", easedOpacity);
+                
+                // Marker Pulse
+                const pulse = 6 + Math.sin(elapsed / 300) * 2;
+                marker
+                    .attr("cx", x)
                     .attr("cy", y)
+                    .attr("r", pulse)
                     .attr("opacity", easedOpacity);
-                label.attr("x", x + 8)
-                    .attr("y", y)
-                    .attr("opacity", easedOpacity);
+                
+                // Halo pulse
+                const haloSize = 12 + Math.sin(elapsed / 300) * 6;
+                const haloOpacity = 0.5 + Math.sin(elapsed / 300) * 0.5;
+                
+                halo
+                    .attr("cx", x)
+                    .attr("cy", y)
+                    .attr("r", haloSize)
+                    .attr("opacity", easedOpacity * haloOpacity);
+                
+                // Resize box for text
+                const bbox = label.node().getBBox();
+                labelBg.attr("x", bbox.x - 4)
+                       .attr("y", bbox.y - 2)
+                       .attr("width", bbox.width + 8)
+                       .attr("height", bbox.height + 4);
             
                 const targetSpeed = visible ? 0.02 : 0.1; 
                 currentSpeed += (targetSpeed - currentSpeed) * 0.05; 
@@ -95,13 +131,15 @@ function Globe() {
             
                 svg.selectAll("path.sphere").attr("d", path);
                 svg.selectAll("path.country").attr("d", path);
-            });    
+            });   
+
+            return () => timer.stop(); 
         });
-    }, []);
+    }, [scale]);
 
     return (
-        <div>
-            <svg ref={svgRef}></svg>
+        <div className="flex justify-center items-center">
+            <svg ref={svgRef} className="w-[850px] h-[550px]"></svg>
         </div>
     );
 }

@@ -28,9 +28,6 @@ function InteractiveParticleSphere(props) {
   const radius = props.radius;
   const segments = props.segments;
 
-  const targetScale = 1;
-  const scaleRef = useRef(0.01);
-
   const uniforms = useMemo(() => ({
     u_time: { value: 0 },
     u_mouse: { value: new THREE.Vector3() },

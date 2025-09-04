@@ -38,21 +38,21 @@ function Intro() {
                     </div>
                 </div>
                 <div className="w-full h-full pt-50">
-                <Canvas
-                    dpr={window.devicePixelRatio}
-                    linear
-                    camera={{ position: [-5, 0, 0] }}
-                    onCreated={({ gl }) => {
-                        const canvas = gl.domElement;
-                        canvas.addEventListener("webglcontextlost", (e) => {
-                            console.warn("❌ WebGL context lost");
-                            e.preventDefault();
-                        });
-                        canvas.addEventListener("webglcontextrestored", () => {
-                            console.log("✅ WebGL context restored");
-                        });
-                    }}
-                >
+                    <Canvas
+                        dpr={window.devicePixelRatio}
+                        linear
+                        camera={{ position: [-5, 0, 0] }}
+                        onCreated={({ gl }) => {
+                            const canvas = gl.domElement;
+                            canvas.addEventListener("webglcontextlost", (e) => {
+                                console.warn("❌ WebGL context lost");
+                                e.preventDefault();
+                            });
+                            canvas.addEventListener("webglcontextrestored", () => {
+                                console.log("✅ WebGL context restored");
+                            });
+                        }}
+                    >
                         <ambientLight intensity={1.0}/>
                         <pointLight position={[0.8, 0.8, 0.8]}/>
                         <OrbitControls enableZoom={false} autoRotate={true} autoRotateSpeed={1} enableDamping={true} enablePan={false}/>

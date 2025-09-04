@@ -13,7 +13,7 @@ function Typewriter() {
 
     const jobs = [
         "Software Engineering",
-        "Game Design",
+        "Game Development",
         "Data Analysis",
         "Machine Learning",
         "Full Stack Development"
