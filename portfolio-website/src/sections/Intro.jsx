@@ -4,7 +4,6 @@ import { OrbitControls } from '@react-three/drei';
 import { Suspense } from "react";
 
 import Typewriter from "../components/Typewriter";
-import ParticleSphere from "../components/ParticleSphere";
 import InteractiveParticleSphere from "../components/InteractiveParticleSphere";
 
 function Intro() {

@@ -61,12 +61,11 @@ function InteractiveParticleSphere(props) {
 
     uniforms.u_radius.value = 2.0;
 
-    const duration = 5.0; // seconds
+    const duration = 5.0;
     const t = Math.min(state.clock.elapsedTime / duration, 1.0);
     const eased = 1 + (easeOutElastic(t) - 1) * 0.5;
     meshRef.current.scale.setScalar(eased);
 
-  
     raycaster.setFromCamera(pointer, state.camera);
     if (sphereRef.current) {
         const intersects = raycaster.intersectObject(sphereRef.current);
