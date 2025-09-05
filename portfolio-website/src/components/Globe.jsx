@@ -6,11 +6,31 @@ function Globe({ scale }) {
     const svgRef = useRef();
 
     useEffect(() => {
+        const width = 850;
+        const height = 520;
+
         const svg = d3.select(svgRef.current);
         svg.selectAll("*").remove();
 
-        const width = 850;
-        const height = 550;
+        // Star Background
+        const starCount = 250;
+        const stars = d3.range(starCount).map(() => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            r: Math.random() * 1.5
+        }));
+
+        svg.append("g")
+            .attr("class", "stars")
+            .selectAll("circle")
+            .data(stars)
+            .enter()
+            .append("circle")
+            .attr("cx", d => d.x)
+            .attr("cy", d => d.y)
+            .attr("r", d => d.r)
+            .attr("fill", "white")
+            .attr("opacity", () => 0.4 + Math.random() * 0.6);
         
         const projection = d3.geoOrthographic()
             .scale(scale)
@@ -83,7 +103,12 @@ function Globe({ scale }) {
             const timer = d3.timer((elapsed) => {
                 const delta = elapsed - lastElapsed;
                 lastElapsed = elapsed;
+
+                // Star twinkle
+                svg.selectAll("g.stars circle")
+                    .attr("opacity", (d, i) => 0.1 + 0.6 * Math.abs(Math.sin(elapsed / 1000 + i)));
             
+                // Check visibility of location
                 const rotation = projection.rotate(); 
                 const rotatedCoords = d3.geoRotation(rotation)(myCoords);
                 const visible = rotatedCoords[0] > -90 && rotatedCoords[0] < 90;
@@ -139,7 +164,7 @@ function Globe({ scale }) {
 
     return (
         <div className="flex justify-center items-center">
-            <svg ref={svgRef} className="w-[850px] h-[550px]"></svg>
+            <svg ref={svgRef} className="w-[850px] h-[520px]"></svg>
         </div>
     );
 }
