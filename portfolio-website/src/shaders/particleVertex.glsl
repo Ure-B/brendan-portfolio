@@ -30,7 +30,7 @@ void main() {
 
     vec4 mvPosition = modelViewMatrix * vec4(animatedPosition, 1.0);
     gl_Position = projectionMatrix * mvPosition;
-    gl_PointSize = 4.0;
+    gl_PointSize = 3.0;
 
     vec3 normal = normalize((modelViewMatrix * vec4(originalPosition, 0.0)).xyz);
     vec3 viewDir = vec3(0.0, 0.0, 1.0);
