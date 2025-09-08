@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 
 function Home() {
     return (
-        <div>
+        <div className="w-screen bg-[#060816]">
             <Header/>
             <Intro/>
             <About/>

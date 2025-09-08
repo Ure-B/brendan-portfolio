@@ -1,6 +1,6 @@
 function Work() {
     return (
-        <div id="work">
+        <div id="work" className="w-full h-screen">
             
         </div>
     );

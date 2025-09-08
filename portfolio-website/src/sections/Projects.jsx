@@ -1,6 +1,6 @@
 function Projects() {
     return (
-        <div id="projects">
+        <div id="projects" className="w-full h-screen">
             
         </div>
     );
