@@ -8,7 +8,7 @@ function Header() {
             <nav className="fixed z-10 top-0 right-0 left-0 p-4 bg-[#060816]">
                 <div className="flex justify-between pl-30 pr-25">
                     <a href="#intro" className="flex flex-row gap-3">
-                        <img src="/brendan-portfolio/ProfilePic.png" alt="profile-pic" className="w-32 max-w-6 sm:w-0 md:w-0 lg:w-6 xl:w-6 h-auto"/>
+                        <img src="ProfilePic.png" alt="profile-pic" className="w-32 max-w-6 sm:w-0 md:w-0 lg:w-6 xl:w-6 h-auto"/>
                         <p className="text-white cursor-pointer lg:text-[20px] xl:text-[23px] font-extrabold font-sans font-stretch-105%">BRENDAN URE</p>
                     </a>
                     <ul className="flex gap-6">

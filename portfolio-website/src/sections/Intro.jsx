@@ -10,8 +10,8 @@ function Intro() {
     return (
         <div id="intro">
             <div className="w-full h-screen relative z-0 bg-cover bg-no-repeat bg-center bg-[url('/background1.png')]">
-                <div className="absolute top-[120px] left-[150px] mx-auto px-6 flex flex-row items-start gap-5 z-20">
-                    <h1 className="font-black text-[40px] text-[#915EFF]">*</h1>
+                <div className="absolute top-[120px] left-[170px] mx-auto px-6 flex flex-row items-start gap-5 z-20">
+
                     <div className="flex flex-col">
                         <motion.div 
                             initial={{opacity: 0, y: -50}} 
@@ -89,7 +89,7 @@ function Intro() {
                         <pointLight position={[0.8, 0.8, 0.8]}/>
                         <OrbitControls enableZoom={false} autoRotate={true} autoRotateSpeed={1} enableDamping={true} enablePan={false}/>
                         <Suspense fallback={<div>Loading component...</div>}>
-                            <InteractiveParticleSphere position={[0, 0, 0]} radius={2.0} segments={24}/>
+                            <InteractiveParticleSphere position={[0, 0, 0]} radius={2.2} segments={24}/>
                         </Suspense>
                     </Canvas>
                 </div>
