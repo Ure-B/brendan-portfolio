@@ -2,7 +2,7 @@
 ## By Brendan Ure
 
 ### Link to live website:
-brendanure.dev
+https://brendanure.dev
 
 ### To run locally, use this command:
 - npm run dev
