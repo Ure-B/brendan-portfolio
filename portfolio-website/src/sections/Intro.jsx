@@ -8,9 +8,9 @@ import InteractiveParticleSphere from "../components/InteractiveParticleSphere";
 
 function Intro() {
     return (
-        <div>
+        <div id="intro">
             <div className="w-full h-screen relative z-0 bg-cover bg-no-repeat bg-center bg-[url('/background1.png')]">
-                <div className="absolute inset-0 top-[120px] max-w-7xl mx-auto sm:px-16 px-6 flex flex-row items-start gap-5">
+                <div className="absolute inset-0 top-[120px] left-[150px] mx-auto px-6 flex flex-row items-start gap-5">
                     <h1 className="font-black text-[40px] text-[#915EFF]">*</h1>
                     <div>
                         <motion.div 

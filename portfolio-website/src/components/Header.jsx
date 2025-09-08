@@ -7,7 +7,7 @@ function Header() {
         <div>
             <nav className="fixed z-10 top-0 right-0 left-0 p-4 bg-[#060816]">
                 <div className="flex justify-between pl-30 pr-25">
-                    <a href="/brendan-portfolio" className="flex flex-row gap-3">
+                    <a href="#intro" className="flex flex-row gap-3">
                         <img src="/brendan-portfolio/ProfilePic.png" alt="profile-pic" className="w-6"/>
                         <p className="text-white cursor-pointer text-[20px] font-extrabold font-sans font-stretch-105%">BRENDAN URE</p>
                     </a>
