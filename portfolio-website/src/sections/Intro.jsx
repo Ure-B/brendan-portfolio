@@ -10,7 +10,7 @@ function Intro() {
     return (
         <div id="intro">
             <div className="w-full h-screen relative z-0 bg-cover bg-no-repeat bg-center bg-[url('/background1.png')]">
-                <div className="absolute top-[120px] left-[170px] mx-auto px-6 flex flex-row items-start gap-5 z-20">
+                <div className="absolute top-[120px] left-[60px] lg:left-[170px] xl:left-[170px] mx-auto px-6 flex flex-row items-start gap-5 z-20">
 
                     <div className="flex flex-col">
                         <motion.div 
@@ -19,9 +19,9 @@ function Intro() {
                             transition={{duration: 1.5, type: "spring"}}
                         >
                             <div className="flex flex-row gap-3.5">
-                                <h1 className="font-black lg:text-[80px] xl:text-[90px] text-[#FFFFFF]">Hi, I'm </h1>
+                                <h1 className="font-black text-[30px] lg:text-[80px] xl:text-[90px] text-[#FFFFFF]">Hi, I'm </h1>
                                 <motion.div initial={{ color: "#FFFFFF"}} animate={{ color: "#915EFF" }} transition={{ duration: 2, type: "spring", delay: 1 }}>
-                                    <h1 className="font-black lg:text-[80px] xl:text-[90px]">Brendan</h1>
+                                    <h1 className="font-black text-[30px] lg:text-[80px] xl:text-[90px]">Brendan</h1>
                                 </motion.div>
                             </div>
                         </motion.div>
@@ -31,11 +31,11 @@ function Intro() {
                             transition={{duration: 2, type: "spring"}}
                         >
                         <div className="text-left items-start flex flex-row gap-2.5 leading-10">
-                            <p className="text-white lg:text-[35px] xl:text-[40px] font-semibold font-black font-stretch-105%">I do</p>
+                            <p className="text-white text-[20px] lg:text-[35px] xl:text-[40px] font-semibold font-black font-stretch-105%">I do</p>
                             <Typewriter/>
                         </div>
                         </motion.div>
-                        <div className="text-left items-start flex flex-row gap-5 mt-10">
+                        <div className="text-left items-start flex flex-row gap-5 mt-2 lg:mt-10 xl:mt-10">
                             <motion.div 
                                 initial={{opacity: 0, x: 80}} 
                                 whileInView={{opacity: 1, x: 0}}
@@ -47,7 +47,7 @@ function Intro() {
                                     transition={{duration: 0.5, type: "spring"}}
                                 >
                                     <a href="#about">
-                                        <button className="cursor-pointer bg-[#915EFF] font-black font-semibold text-white px-4 py-2 rounded-lg border-2 border-[#915EFF] lg:text-[15px] xl:text-[20px]">Learn More</button>
+                                        <button className="cursor-pointer bg-[#915EFF] font-black font-semibold text-white px-2 lg:px-4 xl:px-4 py-1 lg:py-2 xl:py-2 rounded-lg border-2 border-[#915EFF] text-[10px] lg:text-[15px] xl:text-[20px]">Learn More</button>
                                     </a>
                                 </motion.div>
                             </motion.div>
@@ -62,7 +62,7 @@ function Intro() {
                                     transition={{duration: 0.5, type: "spring"}}
                                 >
                                     <a href="#projects">
-                                        <button className="cursor-pointer bg-transparent font-black font-semibold text-[#915EFF] px-4 py-2 rounded-lg border-2 border-[#915EFF] lg:text-[15px] xl:text-[20px]">View Projects</button>
+                                        <button className="cursor-pointer bg-transparent font-black font-semibold text-[#915EFF] px-2 lg:px-4 xl:px-4 py-1 lg:py-2 xl:py-2 rounded-lg border-2 border-[#915EFF] text-[10px] lg:text-[15px] xl:text-[20px]">View Projects</button>
                                     </a>
                                 </motion.div>
                             </motion.div>
