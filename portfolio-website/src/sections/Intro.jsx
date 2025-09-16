@@ -31,7 +31,7 @@ function Intro() {
                             transition={{duration: 2, type: "spring"}}
                         >
                         <div className="text-left items-start flex flex-row gap-2.5 leading-10">
-                            <p className="text-white text-[20px] lg:text-[35px] xl:text-[40px] font-semibold font-black font-stretch-105%">I do</p>
+                            <p className="text-white text-[20px] lg:text-[35px] xl:text-[45px] font-semibold font-black font-stretch-105%">I do</p>
                             <Typewriter/>
                         </div>
                         </motion.div>
@@ -39,7 +39,7 @@ function Intro() {
                             <motion.div 
                                 initial={{opacity: 0, x: 80}} 
                                 whileInView={{opacity: 1, x: 0}}
-                                transition={{duration: 2, delay: 0.5, type: "spring"}}
+                                transition={{duration: 2, type: "spring"}}
                             >
                                 <motion.div 
                                     whileHover={{y: -5}}
@@ -52,9 +52,9 @@ function Intro() {
                                 </motion.div>
                             </motion.div>
                             <motion.div 
-                                initial={{opacity: 0, x: 50}} 
+                                initial={{opacity: 0, x: 80}} 
                                 whileInView={{opacity: 1, x: 0}}
-                                transition={{duration: 2, delay: 0.7, type: "spring"}}
+                                transition={{duration: 3, type: "spring"}}
                             >
                                 <motion.div 
                                     whileHover={{y: -5}}
