@@ -44,7 +44,7 @@ export default function TiltCard() {
   return (
     <motion.div
       ref={ref}
-      className="w-100 h-100"
+      className="w-110 h-110"
       style={{ perspective: 1000 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}

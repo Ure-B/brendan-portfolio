@@ -1,5 +1,4 @@
-import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
+import { motion, useMotionValue } from "framer-motion";
 import Skill from "./Skill";
 
 const skills = [
@@ -7,38 +6,21 @@ const skills = [
   "Nodedotjs", "Express", "MySQL", "MongoDB", "PostgreSQL", "Unity", "dotNet", "Git", "Docker", "PyTorch"
 ];
 
-export default function Skills({ width = 250 }) {
-  const controls = useAnimation();
-  const repeatedSkills = [...skills, ...skills]; // duplicate for seamless loop
-  const totalWidth = repeatedSkills.length * 90; // approximate pixel width, adjust as needed
-  const duration = 20;
-
-  useEffect(() => {
-    const animateLoop = async () => {
-      while (true) {
-        await controls.start({
-          x: -totalWidth / 2,
-          transition: { duration: duration, ease: "linear" },
-        });
-        controls.set({ x: 0 }); // reset instantly to start
-      }
-    };
-    animateLoop();
-  }, [controls, totalWidth]);
+export default function Skills() {
+  const repeatedSkills = [...skills];
+  const x = useMotionValue(0);
 
   return (
-    <motion.div
-      className="overflow-hidden w-full"
-      onMouseEnter={() => controls.stop()} // pause on hover
-      onMouseLeave={() => controls.start({
-          x: -totalWidth / 2,
-          transition: { duration: duration, ease: "linear" },
-        })} // resume on leave
-    >
+    <div className="relative w-full overflow-hidden cursor-grab">
+      <div className="absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-[#060816] to-transparent pointer-events-none z-10" />
+      <div className="absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-[#060816] to-transparent pointer-events-none z-10" />
       <motion.div
         className="flex whitespace-nowrap"
-        animate={controls}
-        style={{ display: "flex" }}
+        style={{ x }}
+        drag="x"
+        dragConstraints={{ left: -repeatedSkills.length * 95, right: 0 }}
+        dragElastic={0.1}
+        whileTap={{ cursor: "grabbing" }}
       >
         {repeatedSkills.map((skill, index) => (
           <div key={index} className="mr-4 flex-shrink-0">
@@ -46,6 +28,6 @@ export default function Skills({ width = 250 }) {
           </div>
         ))}
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
