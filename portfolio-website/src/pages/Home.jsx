@@ -13,7 +13,7 @@ function Home() {
             <Intro/>
             <About/>
             <Projects/>
-            <Work/>
+            {/* <Work/> */}
             <Contact/>
             <Footer/>
         </div>

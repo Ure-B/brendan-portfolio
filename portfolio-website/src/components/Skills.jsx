@@ -6,7 +6,7 @@ const skills = [
   "Nodedotjs", "Express", "MySQL", "MongoDB", "PostgreSQL", "Unity", "dotNet", "Git", "Docker", "PyTorch"
 ];
 
-export default function Skills() {
+function Skills() {
   const repeatedSkills = [...skills];
   const x = useMotionValue(0);
 
@@ -31,3 +31,5 @@ export default function Skills() {
     </div>
   );
 }
+
+export default Skills;

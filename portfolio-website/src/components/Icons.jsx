@@ -1,6 +1,6 @@
 import * as icons from "simple-icons";
 
-const SkillIcon = ({ title }) => {
+function SkillIcon({ title }) {
     const iconName = "si" + title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
     const icon = icons[iconName.replace(" ", "")];
 

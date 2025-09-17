@@ -1,4 +1,6 @@
 import { motion } from "motion/react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 import NavElement from "./NavElement";
 
@@ -21,9 +23,9 @@ function Header() {
                                 <li>
                                     <a className="flex gap-2 cursor-pointer bg-[#060816]" target="_blank" href="ResumeBU.pdf">
                                         <p className="text-white lg:text-[20px] xl:text-[23px] font-semibold font-sans font-stretch-105%">Resume</p>
-                                        <svg className="size-7.5 text-[#915EFF]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                                        </svg>
+                                        <div className="flex items-center justify-center">
+                                            <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-[23px] text-[#915EFF]"/>
+                                        </div>
                                     </a>
                                 </li>
                             </motion.button>

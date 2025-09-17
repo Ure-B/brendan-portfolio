@@ -7,8 +7,8 @@ import TiltCard from "../components/TiltCard";
 
 function About() {
     return (
-        <div id="about" className="w-full h-screen">
-            <div className="absolute top-full left-[170px] mx-auto px-6 flex flex-col mt-60">
+        <div id="about" className="w-full h-screen pt-60 pl-43">
+            <div className="mx-auto px-6 flex flex-col">
                 <div className="flex flex-row gap-20">
                     <div className="flex flex-col gap-5 max-w-230 text-left items-start">
                         <motion.div 

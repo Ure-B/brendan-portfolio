@@ -7,11 +7,11 @@ import Globe from "../components/Globe";
 
 function Contact() {
     return (
-        <div id="contact" className="w-full mb-10">
+        <div id="contact" className="w-full mb-10 mt-10">
             <motion.div 
-                            initial={{opacity: 0, x: -150}} 
-                            whileInView={{opacity: 1, x: 0}}
-                            transition={{duration: 2.5, type: "spring"}}
+                initial={{opacity: 0, x: -150}} 
+                whileInView={{opacity: 1, x: 0}}
+                transition={{duration: 2.5, type: "spring"}}
             >
                 <div className="flex flex-col gap-2 items-center justify-center">
                     <Globe scale={225}/>
