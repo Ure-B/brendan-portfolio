@@ -1,4 +1,4 @@
-# 🌐 Brendan Ure — Portfolio Website
+# 🌐 Portfolio Website
 
 Welcome to the source code for my personal portfolio website.  
 
