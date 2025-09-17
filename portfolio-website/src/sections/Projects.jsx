@@ -44,10 +44,11 @@ function Projects() {
                         />
                         <ProjectCard 
                             size={250}
-                            title="Cool Project"
-                            description="An awesome project that does X, Y, and Z."
-                            github=""
-                            demo=""
+                            title="Portfolio Website"
+                            description="A personal portfolio, built to showcase my software engineering projects and skills."
+                            tags={["React", "Tailwind CSS", "Framer Motion", "Three.js", "D3.js"]}
+                            github="https://github.com/Ure-B/brendan-portfolio"
+                            demo="https://brendanure.dev/"
                         />
                     </div>
                     <ProjectCard 
