@@ -1,6 +1,7 @@
 # 🌐 Brendan Ure — Portfolio Website
 
 Welcome to the source code for my personal portfolio website.  
+
 This site showcases my projects and skills as a **Software Engineer** and **Computer Science student**.  
 
 👉 **Live Website:** [brendanure.dev](https://brendanure.dev)
@@ -8,8 +9,8 @@ This site showcases my projects and skills as a **Software Engineer** and **Comp
 ---
 
 ## 📸 Preview
-<div align="center">
-  <img src="background1.png" alt="Preview" width="600px"/>
+<div align="left">
+  <img src="/portfolio-website/public/background1.png" alt="Preview" width="full"/>
 </div>
 
 ---
