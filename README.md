@@ -10,7 +10,7 @@ This site showcases my projects and skills as a **Software Engineer** and **Comp
 
 ## 📸 Preview
 <div align="left">
-  <img src="/portfolio-website/public/background1.png" alt="Preview" width="full"/>
+  <img src="/portfolio-website/public/preview.PNG" alt="Preview" width="full"/>
 </div>
 
 ---
