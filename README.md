@@ -59,4 +59,4 @@ npm run dev
 ---
 
 ## 📄 License
-This project is licensed under the [MIT License](./LICENSE).
+MIT License © [Brendan Ure](LICENSE)
