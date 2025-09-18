@@ -7,7 +7,7 @@ function Globe({ scale }) {
 
     useEffect(() => {
         const width = 850;
-        const height = 520;
+        const height = 550;
 
         const svg = d3.select(svgRef.current);
         svg.selectAll("*").remove();
@@ -164,7 +164,7 @@ function Globe({ scale }) {
 
     return (
         <div className="flex justify-center items-center">
-            <svg ref={svgRef} className="w-[850px] h-[520px]"></svg>
+            <svg ref={svgRef} className="w-[850px] h-[550px]"></svg>
         </div>
     );
 }

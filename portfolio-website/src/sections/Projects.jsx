@@ -16,6 +16,17 @@ function Projects() {
                     <div className="w-full border-b border-1 text-[#915EFF]"/>
                 </motion.div>
                 <div className="flex flex-row gap-5">
+                    <ProjectCard 
+                            size={520}
+                            image="constructionyard.PNG"
+                            title="Construction Yard"
+                            description="Transformed a basic WebGL engine into a full-stack, state-saving application, which is currently
+                                        used to help teach CMPT 370 students at MacEwan University.
+                                        "
+                            tags={["WebGL", "React", "Node.js", "Express", "PostgreSQL", "AWS S3", "REST API", "JWT"]}
+                            github="https://github.com/tehzwen/ConstructionYard"
+                            demo="https://constructionyard.ca/"
+                    />
                     <div className="flex flex-col gap-5">
                         <ProjectCard 
                             size={250}
@@ -28,18 +39,22 @@ function Projects() {
                         />
                         <ProjectCard 
                             size={250}
-                            title="Cool Project"
-                            description="An awesome project that does X, Y, and Z."
+                            title="Whacked!"
+                            description="An online multiplayer top-down shooter that is currently available for wishlist on Steam.
+                            "
+                            tags={["C#", "Unity", "Netcode", "Steamworks SDK"]}
                             github=""
-                            demo=""
+                            demo="https://store.steampowered.com/app/3745140/Whacked/"
                         />
                     </div>
                     <div className="flex flex-col gap-5">
                         <ProjectCard 
                             size={250}
-                            title="Cool Project"
-                            description="An awesome project that does X, Y, and Z."
-                            github=""
+                            title="AD Research"
+                            description="Develop cutting-edge deep learning models that analyze brain structure in correlation with Dementia, Alzheimer's, and ALS.
+                            "
+                            tags={["Python", "PyTorch", "NumPy", "scikit-learn"]}
+                            github="https://github.com/Ure-B/ad-research"
                             demo=""
                         />
                         <ProjectCard 
@@ -51,17 +66,6 @@ function Projects() {
                             demo="https://brendanure.dev/"
                         />
                     </div>
-                    <ProjectCard 
-                            size={520}
-                            image="constructionyard.PNG"
-                            title="Construction Yard"
-                            description="Transformed a basic WebGL engine into a full-stack, state-saving application, which is currently
-                                        used to help teach CMPT 370 students at MacEwan University.
-                                        "
-                            tags={["WebGL", "React", "Node.js", "Express", "PostgreSQL", "AWS S3", "REST API", "JWT"]}
-                            github="https://github.com/tehzwen/ConstructionYard"
-                            demo="https://constructionyard.ca/"
-                        />
                 </div>
             </div>
         </div>

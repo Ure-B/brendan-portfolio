@@ -7,13 +7,17 @@ import Globe from "../components/Globe";
 
 function Contact() {
     return (
-        <div id="contact" className="w-full mb-10 mt-10">
+        <div id="contact" className="w-full h-full mb-10 pt-25">
             <motion.div 
                 initial={{opacity: 0, x: -150}} 
                 whileInView={{opacity: 1, x: 0}}
                 transition={{duration: 2.5, type: "spring"}}
             >
                 <div className="flex flex-col gap-2 items-center justify-center">
+                    <div className="mb-10">
+                        <h1 className="font-black text-white text-left text-[20px] lg:text-[35px] xl:text-[55px]">What's next?</h1>
+                        <div className="w-full border-b border-1 text-[#915EFF]"/>
+                    </div>
                     <Globe scale={225}/>
                     <div>
                         <p className="font-sans font-normal text-[20px] text-white">Reach out so we can connect!</p>

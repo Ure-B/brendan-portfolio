@@ -31,7 +31,7 @@ function About() {
                             whileInView={{opacity: 1, y: 0}}
                             transition={{duration: 2, type: "spring"}}
                         >
-                            <p className="font-black text-white lg:text-[20px] xl:text-[21px] font-normal">
+                            <p className="font-black text-gray-200 lg:text-[20px] xl:text-[21px] font-normal">
                                 As a recent Bachelor of Science graduate, I am seeking new grad opportunities in the tech industry with an innovative company where I can grow my coding skills. During my degree at MacEwan University, I transformed a basic WebGL graphics engine into a full-stack web application for my capstone project and worked as a research assistant developing deep learning models analyzing brain structure in relation to diseases like Dementia and ALS. In my spare time, I enjoy building personal projects, including websites and games, with one of my games currently available on Steam.
                             </p>
                         </motion.div>
