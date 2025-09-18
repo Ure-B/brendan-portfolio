@@ -1,4 +1,4 @@
-# 🌐 Brendan Ure — Portfolio Website
+# 🌐 Portfolio Website
 
 Welcome to the source code for my personal portfolio website.  
 
@@ -20,7 +20,7 @@ This site showcases my projects and skills as a **Software Engineer** and **Comp
 - Smooth animations
 - 3D visuals
 - Project cards with GitHub + live demo links
-- Optimized for performance accessibility
+- Optimized for performance and accessibility
 
 ---
 
@@ -46,6 +46,7 @@ npm install
 
 ### Run Locally
 ```bash
+cd portfolio
 npm run dev
 ```
 
@@ -58,4 +59,4 @@ npm run dev
 ---
 
 ## 📄 License
-This project is licensed under the [MIT License](./LICENSE).
+MIT License © [Brendan Ure](LICENSE)
