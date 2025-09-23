@@ -20,7 +20,7 @@ function Intro() {
             setShowCanvas(false);
         } else {
             setSphereConfig({ radius: 2.2, segments: 24 }); // desktop
-            setShowCanvas(false);
+            setShowCanvas(true);
         }
         };
 
