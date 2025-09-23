@@ -83,8 +83,8 @@ function Typewriter() {
 
     return (
         <div className="flex">
-            <p className="text-white text-[20px] lg:text-[35px] xl:text-[45px] font-semibold font-black font-stretch-105%">{string}</p>
-            {cursorState && <p className="text-[#915EFF] text-[20px] lg:text-[35px] xl:text-[40px] font-semibold font-black font-stretch-105%">|</p>}
+            <p className="text-white text-[20px] sm:text-[20px] md:text-[28px] lg:text-[35px] xl:text-[45px] font-semibold">{string}</p>
+            {cursorState && <p className="text-[#915EFF] text-[20px] sm:text-[20px] md:text-[28px] lg:text-[35px] xl:text-[45px] font-semibold font-black font-stretch-105%">|</p>}
         </div>
     );
 }

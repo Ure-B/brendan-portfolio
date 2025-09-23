@@ -18,7 +18,7 @@ function Skills() {
         className="flex whitespace-nowrap"
         style={{ x }}
         drag="x"
-        dragConstraints={{ left: -repeatedSkills.length * 95, right: 0 }}
+        dragConstraints={{ left: -repeatedSkills.length * 110, right: 0 }}
         dragElastic={0.1}
         whileTap={{ cursor: "grabbing" }}
       >

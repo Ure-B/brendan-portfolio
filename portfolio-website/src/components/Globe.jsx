@@ -2,12 +2,12 @@ import { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import * as topojson from "topojson-client";
 
-function Globe({ scale }) {
+function Globe({ scale, w=850, h=550, fontSize=24 }) {
     const svgRef = useRef();
 
     useEffect(() => {
-        const width = 850;
-        const height = 550;
+        const width = w;
+        const height = h;
 
         const svg = d3.select(svgRef.current);
         svg.selectAll("*").remove();
@@ -82,7 +82,7 @@ function Globe({ scale }) {
             const location = "Edmonton, AB, Canada";
             const label = labelGroup.append("text")
                 .text(location)
-                .attr("font-size", 24)
+                .attr("font-size", fontSize)
                 .attr("font-weight", "bold")
                 .attr("fill", "#ceb7ff")
                 .attr("text-anchor", "left")
@@ -164,7 +164,7 @@ function Globe({ scale }) {
 
     return (
         <div className="flex justify-center items-center">
-            <svg ref={svgRef} className="w-[850px] h-[550px]"></svg>
+            <svg ref={svgRef} style={{ width: `${w}px`, height: `${h}px` }}></svg>
         </div>
     );
 }

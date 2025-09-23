@@ -16,3 +16,16 @@
     scrollbar-width: none;     /* Firefox */
   }
 }
+
+/* tailwind.css or global.css */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #1f1f29; /* match card bg */
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #915EFF; /* purple highlight */
+  border-radius: 9999px;
+}
+

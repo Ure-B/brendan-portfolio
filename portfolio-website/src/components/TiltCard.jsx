@@ -1,7 +1,7 @@
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useRef, useEffect } from "react";
 
-export default function TiltCard() {
+export default function TiltCard({w=110, h=110}) {
   const ref = useRef(null);
 
   const x = useMotionValue(0.5);
@@ -44,8 +44,7 @@ export default function TiltCard() {
   return (
     <motion.div
       ref={ref}
-      className="w-110 h-110"
-      style={{ perspective: 1000 }}
+      style={{ perspective: 1000, width: `${w}px`, height: `${h}px` }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
