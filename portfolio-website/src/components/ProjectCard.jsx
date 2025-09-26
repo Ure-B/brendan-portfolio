@@ -24,15 +24,17 @@ const ProjectCard = ({ size, image, title, description, tags = [], github, demo 
       )}
 
       {/* Content container is scrollable */}
-      <div className="flex-1 flex flex-col justify-between p-4 overflow-y-auto scrollbar-thin">
+      <div className="flex-1 flex flex-col justify-between p-4">
         {/* Title & Description */}
         <div className="text-left">
           <h2 className="font-black text-white text-[10px] sm:text-base md:text-lg lg:text-xl xl:text-2xl">
             {title}
           </h2>
-          <p className="font-normal text-gray-200 text-[6px] sm:text-sm md:text-base lg:text-sm xl:text-md mt-1">
-            {description}
-          </p>
+          <div className="relative">
+            <p className="font-normal text-gray-200 text-[6px] sm:text-sm md:text-base lg:text-sm xl:text-md mt-1 h-10 overflow-y-auto scrollbar-thin">
+                {description}
+            </p>
+        </div>
         </div>
 
         {/* Tags */}

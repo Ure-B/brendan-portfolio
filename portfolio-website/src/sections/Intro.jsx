@@ -19,7 +19,7 @@ function Intro() {
             setSphereConfig({ radius: 1.8, segments: 20 }); // tablet
             setShowCanvas(false);
         } else {
-            setSphereConfig({ radius: 2.2, segments: 24 }); // desktop
+            setSphereConfig({ radius: 2.0, segments: 24 }); // desktop
             setShowCanvas(true);
         }
         };
@@ -117,7 +117,7 @@ function Intro() {
 
             {/* Background Canvas */}
             {showCanvas && (
-            <div className="w-full h-full pt-20 absolute inset-0 z-10">
+            <div className="w-full h-full pt-70 absolute inset-0 z-10">
                 <Canvas
                 dpr={window.devicePixelRatio}
                 linear
