@@ -50,7 +50,7 @@ export default function TiltCard({w=110, h=110}) {
     >
       {/* Base Image */}
       <motion.img
-        src="ProfilePic.png"
+        src="ProfilePic.jpg"
         alt="profile_pic"
         className="w-full h-full object-cover rounded-lg border-3 border-[#915EFF]"
         style={{
