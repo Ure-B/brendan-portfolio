@@ -13,12 +13,59 @@ function Header() {
 			<nav className="fixed z-10 top-0 right-0 left-0 p-4 bg-[#060816]">
 				<div className="flex justify-between items-center px-4 md:px-8">
 				{/* Logo / Name */}
-				<a href="#intro" className="flex flex-row gap-3">
-					<img src="ProfilePic.jpg" alt="Logo" className="w-10 h-10 border-0 rounded-xs" />
-					<p className="text-white cursor-pointer text-[18px] sm:text-[20px] xl:text-[23px] font-extrabold font-sans tracking-wide">
-					BU
-					</p>
-				</a>
+				<motion.a
+					href="#intro"
+					className="flex items-center gap-3"
+				>
+					<img
+						src="ProfilePic.jpg"
+						alt="Logo"
+						className="w-10 h-10 rounded-xs"
+					/>
+
+					<motion.div
+						initial="collapsed"
+						whileHover="expanded"
+						className="flex text-white text-[18px] sm:text-[20px] xl:text-[23px] font-extrabold font-sans tracking-wide whitespace-nowrap"
+					>
+						{/* Brendan */}
+						<span>B</span>
+						<motion.span
+							variants={{
+								collapsed: {
+									width: 0,
+									opacity: 0,
+								},
+								expanded: {
+									width: "6ch",
+									opacity: 1,
+								},
+							}}
+							transition={{ duration: 0.5, ease: "easeInOut" }}
+							className="overflow-hidden inline-block"
+						>
+							rendan
+						</motion.span>
+
+						<span className="ml-1">U</span>
+						<motion.span
+							variants={{
+								collapsed: {
+									width: 0,
+									opacity: 0,
+								},
+								expanded: {
+									width: "2ch",
+									opacity: 1,
+								},
+							}}
+							transition={{ duration: 0.5, ease: "easeInOut" }}
+							className="overflow-hidden inline-block"
+						>
+							re
+						</motion.span>
+					</motion.div>
+				</motion.a>
 
 				{/* Desktop Nav */}
 				<ul className="hidden md:flex gap-6 items-center">
