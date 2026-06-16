@@ -14,8 +14,9 @@ function Header() {
 				<div className="flex justify-between items-center px-4 md:px-8">
 				{/* Logo / Name */}
 				<a href="#intro" className="flex flex-row gap-3">
+					<img src="ProfilePic.jpg" alt="Logo" className="w-10 h-10 border-0 rounded-xs" />
 					<p className="text-white cursor-pointer text-[18px] sm:text-[20px] xl:text-[23px] font-extrabold font-sans tracking-wide">
-					BRENDAN URE
+					BU
 					</p>
 				</a>
 
